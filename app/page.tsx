@@ -5,13 +5,6 @@ import Skeleton from '../components/Skeleton';
 import { Suspense } from 'react';
 
 export default function Page({ searchParams }: { searchParams: { A?: string; B?: string } }) {
-  const A = searchParams?.A || '';
-  const B = searchParams?.B || '';
-
-  const keyA = `A:${A}`;
-  const keyB = `B:${B}`;
-
-  console.log({ keyA, keyB });
 
 
   return (
@@ -24,16 +17,9 @@ export default function Page({ searchParams }: { searchParams: { A?: string; B?:
 
       <h1 className="text-2xl font-bold text-center text-gray-900">Content Loaders</h1>
       <div className="space-y-4">
-        <div>
-          <Suspense fallback={<Skeleton />} key={keyA}>
-            <ContentLoader label={keyA} />
-          </Suspense>
-        </div>
-        <div>
-          <Suspense fallback={<Skeleton />} key={keyB}>
-            <ContentLoader label={keyB} />
-          </Suspense>
-        </div>
+        <Suspense fallback={<Skeleton />}>
+          <ContentLoader label={'Nothing'} />
+        </Suspense>
       </div>
     </div>
   );
