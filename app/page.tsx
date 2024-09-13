@@ -6,12 +6,10 @@ import { Suspense } from 'react';
 
 export default function Page({ searchParams }: { searchParams: { A?: string; B?: string } }) {
   const A = searchParams?.A || '';
-  const B = searchParams?.B || '';
 
   const keyA = `A:${A}`;
-  const keyB = `B:${B}`;
 
-  console.log({ keyA, keyB });
+  console.log({ keyA });
 
 
   return (
@@ -30,8 +28,8 @@ export default function Page({ searchParams }: { searchParams: { A?: string; B?:
           </Suspense>
         </div>
         <div>
-          <Suspense fallback={<Skeleton />} key={keyB}>
-            <ContentLoader label={keyB} />
+          <Suspense fallback={<Skeleton />} key={keyA}>
+            <ContentLoader label={keyA} />
           </Suspense>
         </div>
       </div>
